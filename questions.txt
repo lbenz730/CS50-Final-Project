@@ -1,0 +1,6 @@
+0. The framework provided allows games of size dxd provided that d is between 3 and 9 inclusive.
+1. The game's board is represented in a two dimensional array.
+2. The function greet() is called at the beginning to greet the user and welcome them to the game.
+3. I need to implement four functions. They are init(), draw(), move(), and win().
+
+
