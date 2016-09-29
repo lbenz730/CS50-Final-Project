@@ -1,0 +1,20 @@
+0.  <stdint.h> is a header file that defines the size of certain integer types and sets limits on the minimun and maximum values 
+    that these integer types can be.
+1.  Using uint8_t, uint32_t, int32_t, and uint16_t in a program allows the user to create data structures of a fixed size 
+    (fixed number of bits). uint8_t is an unsigned 8-bit integer, which bpm.h uses to create the size of the constant BYTE. 
+    Thus, using these fixed sizes of memory allows us to create new data structures and give it a certain amount of memory.
+2.  BYTE is one byte, DWORD and LONG are both four bytes, and WORD is two bytes.
+3.  The first two bytes must represent the characters BM. In ASCII, this is 66, 77. In Hexidecimal, this is 0x42, 0x4D.
+4.  bfSize is the total number of bytes used in a bitmap file, while biSize is the total number of bytes used by the 
+    structure BITMAPINFOHEADER.
+5.  If biHeight is negative, this means that the image is top down and the origin of the image is the upper left corner.
+6.  The field biBitCount in BITMAPINFOHEADER specifiecs teh color depth of the image.
+7.  fopen() might return NULL is lines 24 and 32 of copy.c because the mode = "r" (reading). If the file doesn't exist than 
+    fopen() will return NULL.
+8.  The third argument of fread() is always 1 because we are reading in the entire BITMAPINFOHEADER and only want to read
+    that number of bits once. There is no reason why to read in more bits since those further bits would be outside of 
+    BITMAPINFOHEADER.
+9.  If bi.biWidth is 3, line 65 will return 3 to padding.
+10. fseek is a function that offsets the the pointer of a file by a certain amount, thus keeping track of where in the file
+    we are.
+11. SEEK_CUR is a constant signifying the current position of the file's pointer.
