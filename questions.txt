@@ -1,0 +1,28 @@
+0.  According to Miriam-Webster, pneumonoultramicroscopicsilicovolcanoconiosis is "a pneumoconiosis caused by inhalation of very
+    fine silicate or quartz dust". More importantly in the context of this problem, it is the maximum length word we will try
+    and spell check (45 characters)
+    
+1.  According to its man page, getrusage() is a function that gets resource usage measurements/statistics for various calling 
+    processes used in a program. 
+    
+2.  Per the man page for getrusage(), there are 16 different members in a variable of type struct rusage
+
+3.  I think that before and after are passed by reference because we make a calculation using components of each struct, (moreover
+    structs within Before and After). Thus, we need to point at these inner structs with pointers themselves. Also, since we're
+    not passing by value and don't need to make any copies, we save ourselves some memory space and time as well, which is an
+    important part of this problem.
+    
+4.  The for loop iterates over characters in the .txt file, continuing until we've reached the end of the file, as denoted by the 
+    EOF character. If the given character is allowed (I.E. it's alphabetical or an apostrophe), we print the character out. If we
+    get a character that is a number, or a word that exceeds the maximum of 45 characters, we consume the rest of that word and 
+    prepare for the next word. If we reach a character that isn't alphanumeric, and it's not a superfulous space etc. at the 
+    beginning of a word, we conlcude that we've finished building a word. Then we call the check() function to spellcheck the
+    given word, handling it appropriately when given check()'s return value.
+    
+5.  I think that fget() is used to read in character by character rather than using fscanf() to read in entire words at a time,
+    as reading in entire words could be problematic for some of our other functions, as we'll need to go character by character
+    through the words anyway to determine if they're misspelled. Also, each word would vary in size, so we would need to always 
+    adjust the file point correctly, which could be difficult.
+
+6.  The parameters for check and load are declared as constants so we don't accidentally change their the given dictionar/word
+    that we are given (considering we are receiving char* and any changes we made would be permanent).
