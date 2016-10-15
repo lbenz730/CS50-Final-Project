@@ -1,0 +1,28 @@
+= Abstraction
+
+== Answers
+
+1.  Put simply, stacks and queues are abstract data types because they can be implemented in multiple ways underneath the hood. In
+    other words, the way a stack/queue is implememted can vary without changing the surface level functionality of such data types.
+    A stack is still a stack regardless if underneath the hood we use an array or pointer. Unlike arrays and linked list, which are
+    very technical concepts, stacks and queues are defined by their functionality as opposed to what's going on beneath the hood, 
+    and as such, are abstract data types.
+
+2.  The say block in scratch is an abstraction becuase we are able to use it to have our sprite say something without worrying about
+    many details beneath the hood. For example, the user doesn't have to worry about printing out text in a white speech bubble in
+    the correct location of the screen, facing the correct way given the orientation of the sprite etc. All we as users of Scratch
+    have to worry about is entering a phrase for our sprite to say, without concerning ourselves with all of these lower level steps
+    that take place beneath the hood to ensure the speech bubble is implemented as we'd expect. This abstraction throughout Scratch 
+    is what makes it such a great language to from which to begin learning.
+
+3.  String is an abstraction because beneath the hood of strings, we are really dealing with char *, pointers to characters. A 
+    char * points to the address in memory of the first character in a string. The string then continues until '\0', the null
+    terminator is reached. As humans, its much easier to think of words etc. as strings of characters, while beneath the surface
+    the computer makes use of a pointer to the first of these characters in memory. Thus, our surface level view of strings 
+    is an abstraction.
+
+== Debrief
+
+1. I found Week 5's lecture helpful, particularly the section about Stacks and Queues and abstract data types.
+
+2. I spent roughly 30 minutes on this question.

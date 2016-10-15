@@ -1,0 +1,42 @@
+= Story to Share
+
+== Answers
+
+1.  Medium doesn't just use an array to store, for each user, the unique identifiers of the posts that they've already read because
+    the size of arrays are fixed. Every time that each user reads a new post, Medium would have to create a new array for that user,
+    copying over the old array of post identifiers and adding the identifier of the new post that the user just read. This quickly
+    becomes very inefficient, as lots of users reading lots of new posts would mean lots of time wasted copying arrays. It's much 
+    better for Medium to use a data structer with more dynamism to store post identifiers for each user, so that the structure can
+    easily grow each time a new post is read.
+    
+2.  While linked lists can grow as necessary, Medium still doesn't use them to store the unique identifiers of posts that have 
+    already been read becuase lookup in linked lists requires linear time. When recommending new posts to read, Medium needs to 
+    first lookup if the user has read a certain post. If post identifiers were stored in a linked list, each time Medium looked to
+    see if a post had already been read, they would take linear time. Over lots of users and lots of posts, this linear time really
+    starts to add up (compared to data structures that allow for lookup in constant time). Bloom filters are better for Medium, as
+    they allow for lookup in constant time as opposed to linear time.
+
+3.  Medium doesn't use tries to store the unique identifiers of the posts that a user has already read because tries take up a lot
+    of memory, much of which is given to pointers that don't ever end up being used. Thus, relative to the size of the identifiers
+    that Medium would want to store, a trie might take up much more memory than a Bloom filter, which requires very little space 
+    relative to the size of the indentifiers stored. If the indentifiers that Medium wanted to store didn't share many common 
+    prefixes, than a trie would be an even less effective use of space. Simply put, Medium doesn't use a trie because it takes up
+    too much space in memory.
+
+4.  Medium sometimes thinks that a user has read a post even if they have not because it uses Bloom filters to store the unique
+    identifiers of posts that users have read, and Bloom filters occasionally return false positives. A Bloom filter uses multiple
+    hash functions to provide multiple hash identifiers for each item. Medium hashes all of the unique identifiers of posts that a
+    given user has read, and fills the buckets of corresponding hash indicies. Now, when they check to see if a post identifier is
+    in the Bloom fliter (ie post has been read), they hash the post identifier and check to see if the buckets of the corresponding
+    hash inidicies are filled. If all the buckets buckets of the corresponding hash indicies are filled, the search function will 
+    return that the post identifier is in the Bloom filter (ie the post HAS been read). However, there is the possibility that the 
+    buckets of the corresponding hash indicies are all filled due to the hash index values of other post indentifiers. In this case,
+    Medium would still think that a post has been read, even though it hasn't been read. Becuase searching a Bloom filter just 
+    relies on checking if buckets are full, we can never actually tell if something is in the Bloom filter (we can only tell if its 
+    not), and thus Bloom filters give occasional false positives, as in the case of Medium's post suggestion algorithim.
+
+== Debrief
+
+1. Past quiz questions on tries
+
+2. 1 hour

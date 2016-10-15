@@ -1,0 +1,59 @@
+= Insecurity
+
+== Answers
+
+1.  This is not a very secure file format because it displays the theoretically private password at the beginning of the document. 
+    Thus, anyone who doesn't know the password but sees the opened texted file could read the private password by simply copying the
+    first 8 characters of the text file. While someone who doesn't know the password to begin with won't be able to open the file, 
+    anyone who reads the file now knows the private password, defeating the purpose the of password protected file.
+    
+
+2.
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct
+{
+    char password[8];
+}
+FILEHEADER;
+
+int main(int argc, char *argv[])
+{
+    if(argc == 3)
+    {
+        // remember file names
+        char *infile  = argv[1];
+        char *outfile = argv[2];
+        
+        // open input and output files
+        FILE *inptr = fopen(infile, "r");
+        FILE *outptr = fopen(outfile, "w");
+        
+        //skip first 8 characters in inputfile
+        fseek(inptr, 8 * sizeof(char), SEEK_SET);
+        
+        //copy rest of infile to outfile
+        char *word = malloc(sizeof(char));
+        while(fread(word, 1, 1, inptr) == 1)
+        {
+            fwrite(word, 1, 1, outptr);
+        }
+        
+        // close files
+        fclose(inptr);
+        fclose(outptr);
+        free(word);
+    }
+}
+
+
+Please note that while the specification said we could assume two command line arguments would be provided, the source code wouldn't
+compile unless I make use of argc, hence the seemingly superfluous if statement.
+
+
+== Debrief
+
+1. Problem sets 4 and 5 were very helpful for this problem.
+
+2. 1 hour

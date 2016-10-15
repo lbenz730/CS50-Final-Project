@@ -1,0 +1,34 @@
+= Reading Someone Else's Code
+
+== Answers
+
+1.  If get_string() returns NULL to get_char(), this implies that there is some error in get_string() preventing the user from 
+    being able to enter their desired character. If get_char() returned NULL under this error, making it a sentinel value, this 
+    would prevent the user from being able to the actual NULL characte (which has practical uses) into get_char. CHAR_MAX on 
+    the other hand is very unlikely to be entered by the user into get_char(), so by returning CHAR_MAX rather than NULL, we create 
+    an error flag using a character far less frequent than NULL (and create one that allows the user to use NULL).
+    
+2.  We try to read to characters into sscanf() to make sure that the user didn't input more than one character. If we only tried
+    to read one character into sscanf(), we wouldn't wouldn't be able to check if the user entered multiple characters, 
+    which should generate an error. By trying to read in a second character (perhaps after some whitespace), we catch cases where at
+    least two characters are entered, thus having sscanf() return 2, in which case get_char() would correctly prompt the user with 
+    "Retry: ".
+
+3.  We declare allocations and strings as static to ensure that we have access to them after get_string() exits, since we are 
+    altering their values in get_string(). This is really important for freeing all of the strings used, as in order to free all 
+    strings we need to know the pointer to the array where all strings are stored (strings), and how many strings were allocated 
+    by get_string() (allocations). If we didn't declare allocations and strings as static, we'd be in danger of losing them their 
+    final values when get_string() is returned, making it impossible to properly free all strings.
+
+4.  The library ensures that every string allocated by get_string() is eventually freed by automatically calling a static function,
+    called destructor, after execution exits main. Assuming that get_string() has allocated at least one string (ie strings != NULL)
+    we iterate through the number of allocated strings, freeing each of them one at a time. Finally, we make sure to also free
+    the allocated pointer to the array of strings. This ensures that every string allocated by get_string() is freed. 
+    Note: the library is only able to do this because strings and allocations are declared as statics (ie we have access to them
+    after them after get_string() closes, even if they are changed within get_string()). 
+
+== Debrief
+
+1. Fall 2012 Quiz 1, questions 11-13
+
+2. 1.5 hours

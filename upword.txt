@@ -1,0 +1,39 @@
+= What's Upword?
+
+== Answers
+
+1. Yes, forty is an upword.
+
+2. No, fifty is not an upword, as i doesn't come before f.
+
+3.
+
+bool upword(const char *word)
+{
+    if(word == NULL)
+    {
+        return false;
+    }
+    
+    for(int i = 0, n = strlen(word); i < n - 1; i++)
+    {
+        // return false if non-numeric character
+        if(!isalpha(word[i]))
+        {
+            return false;
+        }
+        // return false is letters not alphbetically sorted
+        if(toupper(word[i]) > toupper(word[i + 1]))
+        {
+            return false;
+        }
+    }
+    // return true if passes all checks
+    return true;
+}
+
+== Debrief
+
+1. None
+
+2. 20 mins

@@ -1,0 +1,48 @@
+= Z
+
+== Answers
+
+1. 
+
+function main ()
+{
+    // get integers
+    $x <- get()
+    $y <- get()
+    
+    // print equal if x and y are equal
+    if(not($x < $y))
+    {
+        if(not($y < $x))
+        {
+            print("equal\n")
+        }
+    }
+}
+
+2. 
+
+function main ()
+{
+    $x <- get()
+    zeroprint($x)
+}
+
+function zeroprint($a)
+{
+    // print all values from x down to 0
+    print($a)
+    if(0 < $a)
+    {
+        zeroprint($a - 1)
+    }
+}
+    
+    
+
+
+== Debrief
+
+1. Recursion vs. Iteration slides from section
+
+2. 30 mins

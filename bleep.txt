@@ -1,0 +1,51 @@
+= Bleep
+
+== Answers
+
+1.  The problem with our program lies in the fact that we are using an array (called word) of a fixed size to store words. Once 
+    declared, the size of an array cannot easily be changed. Thus, our array becomes really problematic if we have any word longer
+    than three characters (all strings have an addition null terminator that doesnt count towards its length) because we 
+    would be trying to store more than four characters in a character array of size four, thus introducing buffer overflow into 
+    the space in memory where the boolean bleep is stored. Any word that is at least four characters long will fill the four spaces 
+    in the array with characters that are not the null terminator. Thus, regardless of the string's actual length, strlen(word) 
+    will always evaluate to four, therby bleeping any word four characters or longer, regardless of how cute it is.
+    
+
+2.  Since we don't know how long of a word the user will enter, it would be best to work with dynamic memory. I'll fix the problem
+    by using a pointer to the first character in the string (word) as opposed to using an array to store the word. After this 
+    change, strlen(word) will evaulate correctly, and only words with exactly four characters will be censored. 
+    In summary, I would change the line char word[4]; to char *word = malloc(sizeof(char)); , making sure to free(word) at the end 
+    of my program. (Note, to use free() we must #include <stdlib.h>). The new program could look something the one below.
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    bool bleep = false;
+    char *word = malloc(sizeof(char));
+    scanf("%s", word);
+    if (strlen(word) == 4)
+    {
+        bleep = true;
+    }
+    if (bleep)
+    {
+        printf("$#@!\n");
+    }
+    else
+    {
+        printf("%s\n", word);
+    }
+    free(word);
+}
+    
+
+
+== Debrief
+
+1. None
+
+2. I spent about 20 minutes on this question.

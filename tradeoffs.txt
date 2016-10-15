@@ -1,0 +1,31 @@
+= Tradeoffs
+
+== Answers
+
+1a. The problem is searching for a needle in a haystack. One method (X) is binary search, while the other method (Y) is linear 
+    search.
+
+1b. The advantage that binary search has over linear search is that binary search tends to have a faster run time. Binary search has
+    run time O(log n) while linear search has run time O(n). 
+
+1c. The advantage that linear search has over binary search is that it doesn't require its input be sorted. Binary search requires
+    its input to be sorted, which might require more than linear time. Moreover, binary search also needs its input to be randomly
+    accessible.
+
+2a. The problem is storing data. One method (X) is an array, while the other method (Y) is a linked list.
+
+2b. The advantage that an array has over a linked list is that it stores data contiguously and allows for random access, making
+    lookup operations run in constant time. Linked lists on the other hand do not allow for random access, and many operations
+    tend to run in linear time rather than constant time. Another advantage of arrays is that they take up less space than linked
+    lists, which require additional space to store pointers linking nodes.
+
+2c. The advantage that a linked list has over an array is that unlike an array, it is not a fixed size. The size of a linked link
+    can grow and shrink as necessary because its memory is dynamically allocated. In order to augment or decrease the size of an 
+    array, one would have to create a whole new array, and copy the correct values into their new indicies, which is much more 
+    complicated than altering the size of a linked list.
+
+== Debrief
+
+1. Previous Quizzes
+
+2. 5 minutes

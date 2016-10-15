@@ -1,0 +1,35 @@
+= Restructuring Strings
+
+== Answers
+
+1.  One advantage of this alternative representation of strings is that we can get the length of the string in constant time. The
+    strlen() function for the standard implementation of strings in C runs in linear time, as it has to count each character in the
+    string until it reaches the null terminator. By having the string length presented at the beginning of a string, we can
+    easily get the string length in constant time by simply getting s[0]. This operation takes one step regardless of how long our 
+    string is.
+
+2.  One disadvantage of this alternative representation of strings is that user imputed strings become an inconvience. Either the
+    user has to enter the length of their string before typing their string (which is a nuscance for the user), or we have to take
+    the imput string and calcuate the length and then attach it in front of the given string. Under the later circumstance, the
+    advantage discribed above is negated.
+    
+    Another disadvantage is that when we store the length of the string as an integer in a character array without explicity 
+    declaring it as a character (ie using 6 instead of '6'), the integer is converted to a character with that corresponding ASCII 
+    value. This would make it difficult more difficult scan strings  as we would have no way of knowing where a string ends without 
+    first figuring out its length. We could also run into the possibility of having numerical characters (like '4') in our strings
+    that we might try and interpret as a length of string when in fact it doesn't represent the length of a string.
+
+3.  Code for the reimplimentation of strlen(): 
+
+#include <stdio.h>
+
+size_t strlen(const char *s)
+{
+    return (size_t) s[0];
+}
+
+== Debrief
+
+1. None
+
+2. 30
