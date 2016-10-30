@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+import helpers
+import sys
+from analyzer import Analyzer
+from termcolor import colored
+
+# instantiate analyzer
+analyzer = Analyzer()
+
+# ensure proper usage
+if len(sys.argv) != 2:
+    sys.exit("Usage: ./tweets username")
+    
+# get user's 50 most recent tweets
+tweets = helpers.get_user_timeline(sys.argv[1], 50)
+if tweets == None:
+    sys.exit("No tweets for @{}.".format(sys.argv[1]))
+    
+# analyze tweets and print
+for tweet in tweets:
+    score = analyzer.analyze(tweet)
+    if score > 0.0:
+        print(colored(" {} {}".format(score, tweet), "green"))
+    elif score < 0.0:
+        print(colored("{} {}".format(score, tweet), "red"))
+    else:
+        print(colored(" {} {}".format(score, tweet), "yellow"))
+sys.exit(0)
