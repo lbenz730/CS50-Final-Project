@@ -1,0 +1,34 @@
+= Stranger Things
+
+== Answers
+
+1. So many sites were inaccessible during the attack on Dyn even though the sites themselves were not offline because the attacks on
+Dyn inturrepted Dyn's DNS lookup traffic. Every website is given by an IP address, usually a long numerical code that looks 
+something like #.#.#.# . It would be very difficult, if not impossible, to try and remember the long IP address of every website 
+that we wanted to visit. Domain Name System (DNS) was created so that we could type www.facebook.com into our browser, and DNS would
+lookup and return the IP address that our machine should visit. With Dyn unable to provide DNS services, we couldn't simply type a 
+domain name into the browser and be properly sent to the target website, as no IP address was ever correctly provided. Thus, even 
+though the website were not offline (and could be accessible if we manually typed in the IP address), the appeared inacessible and 
+they wouldn't load by submitting their domain name.
+
+2. So many IoT devices are suscebtible to malware becuase they come with factory-default usernames and passwords, like "user" and
+"admin", and "12345" than are easy to bypass with brute force algorithms. Even though many IoT devices allows users to change the
+default username and password on a web-based administration panel, many IoT devices can be accessed using other communication 
+services like telnet and SSH. In these cases, the factory-default usernames and/or passwords and hard-coded into the system and 
+cannot be changed. Simply put, IoT devices are so susceptible to malware becuase they have easy to crack (default) usernames and 
+passwords, many of which can't be changed.
+
+3. When the router recieves a TCP/IP packet from an IoT devices, it recieves the packet via its private IP address. It should update
+the source address to its own public IP address, and change the destination address to the IP address of the place where the IoT 
+wants the packet sent on the internet. Meanwhile, the destination port and the (pseudorandom) source port should remain unchanged. 
+When the server replies, the destination source should be the public IP address of the router, and the destination port should be 
+the same as the destination port on which the server received the TCP/IP packet. The router should store the private IP address of 
+the IoT device when it recieves a packet, along with the unique source port used for communicating with that device. Then the router 
+should know the IP address where it should forword a packet it receives from the server by simply matching that unique source port 
+with the corresponding IoT IP address stored in memory.
+
+== Debrief
+
+1. Provided links, Lecture 6 notes
+
+2. 1 hour

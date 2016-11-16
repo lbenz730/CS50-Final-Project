@@ -1,0 +1,68 @@
+= Cookies
+
+== Answers
+
+1.
+
+function validate(phone)
+{
+    // Ensure string is exactly 10 characters
+    if (phone.length != 10)
+    {
+        return false;
+    }
+    
+    // Ensure each character is digit (in decimal)
+    for (var i = 0; i < 10; i++)
+    {
+        if (isNaN(parseInt(phone[i],10))) 
+        {
+            return false;
+        }
+    }
+    
+    // Phone Number validated
+    return true;
+}
+
+2.
+
+function validate(phone)
+{
+    // Remove all dashes and parenthesis from number
+    phone = phone.replace(/-/g, "");
+    phone = phone.replace(/[()]/g, "");
+   
+    // Ensure resulting string is exactly 10 characters
+    if (phone.length != 10)
+    {
+        return false;
+    }
+    
+    // Ensure each character is digit (in decimal)
+    for (var i = 0; i < 10; i++)
+    {
+        if (isNaN(parseInt(phone[i],10))) 
+        {
+            return false;
+        }
+    }
+    
+    // Phone Number validated
+    return true;
+}
+
+3. There are a few issues with this implementation of profile. To begin with, this implementation doesn't manipulate phone numbers
+to a common form. Rather, it just inserts what the user entered into the SQL database. It would be much more convenient if all
+phone numbers were formatted the same way, rather than some numbers in the form 1234567890, others in the form (123) 456-4890,
+and others still as 123-456-789. Another issue with this implementation of profile is that the no data is passed to the template
+profile.html. Rather than generating a general template, profile() should return a page with all of the user's imformation. For this
+to occur, at the very least userid should be passed to profile.html. Lastly, this implementation doesn't protect against SQL 
+injection. While this might not be as bad as a log-in screen, it is a rather easy fix, and an experienced hacker might be able to 
+erase our database because our code is susceptible to attack.
+
+== Debrief
+
+1. Stack Overflow, Lecture Notes 9-10
+
+2. 1 hour

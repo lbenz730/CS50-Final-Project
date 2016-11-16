@@ -1,0 +1,33 @@
+= Downword
+
+== Answers
+
+1. Yes, spoonfed is a downword.
+
+2. Yes, troll is a downword.
+
+3. No, this implementation is not correct. According to this function, every word that is not a downword is an upword. Consider the
+word "hello". It is clearly not a downword as o comes after l in the alphabet, nor is it an upword as h comes before e in the 
+alphabet. Since this function just assumes every word that is not a downword is an upword despite the fact that many words are 
+neither upwords nor downwords, it is not correctly implemented.
+
+4.
+
+def downword(word):
+    for i in range(len(word)):
+        # return false for non alphabetical characters
+        if not str.isalpha(word[i]):
+            return False
+            
+        # return false characters in wrong order
+        if i < (len(word) - 1) and str.lower(word[i]) < str.lower(word[i + 1]):
+            return False
+    
+    # return true only if downword
+    return True
+
+== Debrief
+
+1. Old python psets, Upword from test 
+
+2. 25 mins

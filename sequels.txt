@@ -1,0 +1,26 @@
+= SQL Sequels
+
+== Answers
+
+1. SELECT "title" FROM "films" WHERE "title" LIKE "Toy Story%";
+
+2. INSERT INTO "films" (title, year, predecessor_title, predecessor_year, increase) VALUES ("Hannibal", 2001, "The Silence of the Lambs", 1991, "16%");
+
+3. According to SQLite's own documentation, it would use the TEXT storage class to store "16%". When text is inserted into a NUMERIC 
+column, it is converted to INTEGER or REAL only if the conversion is lossless and reversible. When this conversion is not possible,
+SQLite's next default move is to store the data as TEXT. Since converting "16%" to INTERGER or REAL isn't possible (reversible), 
+it will be stored as TEXT.
+
+4.
+CREATE TABLE 'Movies' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'Movie_Title' TEXT NOT NULL, 'Release_Year' INTEGER NOT NULL)
+
+CREATE TABLE 'Sequels' ('Movie_ID' INTEGER PRIMARY KEY NOT NULL, 'Predecessor_ID' INTEGER NOT NULL, 'Increase' NUMERIC NOT NULL)
+
+In this scenario, 'Movies' would store the unique ID of each movie, its title, and its release year. 'Sequels' would contain the 
+movie ID of each sequel, the ID of its predecessor, and the box office increase.
+
+== Debrief
+
+1. Lecture 9    
+
+2. 45 Mins

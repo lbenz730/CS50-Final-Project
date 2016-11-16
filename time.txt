@@ -1,0 +1,24 @@
+= It's Time Again
+
+== Answers
+
+1. While hashtables tend to make many operations run smoother, copying a hashtable is not one of them. In order to copy each element
+of a hashtable, we need to first access each element of that hashtable, and then store it somewhere. Since the time it takes to 
+access n elements depends linearly on the size of n, copying a hashtable runs in O(n) time. And since a dict in Python is basically
+a hashtable, copying it will also require us to access each key and value and store them somewhere, thus requiring linear (ie O(n))
+time.
+
+2. One of the things that we had to do in Sentiments was to delete lines at the beginning section of each text file, where there 
+were superfluous text that wasn't part of the word list. Deletion in a set runs in constant time, O(1), while deletion in a list
+runs in linear time O(n). Since deletion was something that we performed on both text files, storing the files in sets rather than
+lists would allow for faster deletion and thus faster run time of our program.
+
+3. One of the key differences between C and Python is that Python is an object oriented programming language. Since a string is a 
+built in object in Python, it already contains a method that defines its length. The function len() simply retrieves the length 
+already defined within the string object, rather than looping over each character, as strlen() did in C. Since retreiving the length
+(which is already defined) runs in O(1) time rather than O(n), len() is able to run in constant time, O(1).
+== Debrief
+
+1. Lecture Notes, Stack Overflow
+
+2. 1 hour

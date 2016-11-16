@@ -1,0 +1,27 @@
+= Machine Learning Mario
+
+== Answers
+
+1. A stateless algorithim is an algorithim that always produces the same output each time the same input is entered. Stateless
+algorithms can't respond to patterns in the data overtime. Stateful algorithms on the other hand, are algorithms that learn from
+their calculations, and update to respond to patterns in the data over. Rather than simply predicting one letter based on the 
+previous letter (ie. always guessing 'e' will come after 't'), the autocomplete keyboard algorithim adjusts its predictions based on
+the context of what the user is typing, and the user's word history. Beucase the autocomplete algorithim updates itself after each 
+calculation, and uses saved data to improve and make better predictions, we say that it is stateful.
+
+2. One pattern that a good machine-learning algorithm should recognize once trained is that pipes (P) are always represented using 
+exactly two columns of identical height. Another pattern that the algorithm should recognize once trained is that each row of text
+is the same length, and each column of text is the same length (ie. text is a perfect rectange of characters).Finally, the 
+algorithim should recognize that the bottom of a pipe must rest on a block (the lowest P should be directly above =). 
+
+3. A machine learning model/algorithim can only be as good as the amount of data that it is trained on. To make a really high 
+quality machine learning algorithim, one needs an enormous amount of data. It would be impossible to have access to as much search
+data on which to train my algorithims as Google does. Even if I were to use the same algorithms as Google for my CS50 final project, 
+I wouldn't be able to train my algorithms with enough data for them to be as effective as Google's search engine.
+
+
+== Debrief
+
+1. Provided Sheet  
+
+2. 30 Mins
