@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    contolpanel
+{% endblock %}
+{% block head %}
+    <link href="{{ url_for('static', filename='controlpanel_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+    <!-- Create Shot Charts Redirect Button -->
+    <form action="{{ url_for('shotchart') }}" method="get">
+        <fieldset>
+            <div id = "left">
+                <div class="form-group">
+                    <button class="btn btn-warning" type="submit">Shot Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Create Assist Charts Redirect Button -->
+    <form action="{{ url_for('assistchart') }}" method="get">
+        <fieldset>
+            <div id = "center">
+                <div class="form-group">
+                    <button class="btn btn-danger" type="submit">Assist Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Create Rebound Charts Redirect Button -->
+    <form action="{{ url_for('reboundchart') }}" method="get">
+        <fieldset>
+            <div id = "right">
+                <div class="form-group">
+                    <button class="btn btn-info" type="submit">Rebound Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Create Button to return to player select -->
+    <form action="{{ url_for('playerselect') }}" method="get">
+        <fieldset>
+            <div id = "bottom">
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Change Player</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <!-- Exlapation of options -->
+    <div id = "top">
+        Control Panel
+    </div>
+    <div id = "medium">
+        <ul>
+            <li>
+                Shot Charts: View a graphic displaying {{ player }}'s shooting success by location on the court
+            </li>
+            <li>
+                Assist Charts: View a graphic displaying a shots made from {{ player }}'s assists
+            </li>
+            <li>
+                Rebound Charts: View a graphic displaying the locations of missed shots for which the {{ player }} got the rebound
+            </li>
+        </ul>
+    </div>
+{% endblock %}

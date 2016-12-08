@@ -1,0 +1,4 @@
+Flask
+SQLAlchemy
+matplotlib
+mpld3

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block head %}
+    <link href="{{ url_for('static', filename='home_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+    <!-- Display project title -->
+    <div id = "middle">
+        NBA Shot Charts: A Basketball Data Visualization
+    </div>
+    <div id = "middle">
+        By: Luke Benz
+    <div/>
+    <div id = "bottom">
+        CS50 Final Project, Decemeber 2016
+    </div>
+    
+    <!-- Create Get Started Button -->
+    <form action="{{ url_for('playerselect') }}" method="get">
+        <fieldset>
+            <div class="form-group">
+                <button class="btn btn-warning" type="submit">Get Started</button>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Display's image of NBA logo -->
+    <div id = "image">
+        <img alt="NBA Logo" src="https://goodlogo.com/images/logos/national_basketball_association_nba_logo_2414.gif"/>
+    </div>
+
+{% endblock %}
