@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    error
+{% endblock %}
+{% block head %}
+    <link href="{{ url_for('static', filename='controlpanel_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+   <div id = "top2">
+       Error: Please select a valid player from the 2013-14 or 2014-15 NBA Seasons
+   </div>
+   <!-- Create Button to return to player select -->
+    <form action="{{ url_for('playerselect') }}" method="get">
+        <fieldset>
+            <div id = "center">
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Change Player</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

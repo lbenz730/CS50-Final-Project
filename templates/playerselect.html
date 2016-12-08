@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    playerselect
+{% endblock %}
+
+{% block head %}
+    <link href="{{ url_for('static', filename='controlpanel_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+
+    <!-- setup select player form and button -->
+    <form action="{{ url_for('playerselect') }}" method="post">
+        <fieldset>
+            <div id = "center">
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="player" placeholder="Select a Player" type="text"/>
+                </div>
+            </div>
+            <div id = "center2">
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Select</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- provide instructions -->
+    <div id = "top">
+        Player Select
+    </div>
+    <div id = "medium2">
+        Please choose an NBA player to examine (Must be player who played in 2013-2015)
+    </div>
+{% endblock %}

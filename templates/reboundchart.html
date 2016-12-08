@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    reboundchart
+{% endblock %}
+
+{% block head %}
+    <link href="{{ url_for('static', filename='chart_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+    <!--Display Rebound Chart without escaping HTML-->
+    <div id = "chart">
+        {{ chart|safe }}
+    </div>
+    
+    <!--Display Relevant text -->
+    <div id = "top">
+        2013-15 Rebound Chart for {{ player }}
+    </div>
+    <div id = "togglebar">
+        Interactive Togglebar (Move Cursor Left)
+        <ul>
+            <li>Magnifying Glass: Zoom in on a subsection of the court</li>
+            <li>Arrow: Navigate the Court</li>
+            <li>Home: Retrun the plot to original format</li>
+        </ul>
+    </div>
+    
+    <!--Display Player stats -->
+    <div id = "stats">
+        Rebounding Stats for {{ player }}
+         <ul>
+            <li>2-Point Rebound Frequency: {{ stats["twoFreq"] }}</li>
+            <li>3-Point Rebound Frequency: {{ stats["threeFreq"] }}</li>
+            <li>Offensive Rebound Frequency: {{ stats["orebFreq"] }}</li>
+            <li>Defensive Rebound Frequency: {{ stats["drebFreq"] }}</li>
+            <li>Offensive Rebounds Per Defensive Rebound: {{ stats["orebdrebRatio"] }}</li>
+            <li>Frequency of Rebounds from Shots in Paint: {{ stats["paintFreq"] }}</li>
+            <li>Frequency of Rebounds that are Midrange Jumpers: {{ stats["midrangeFreq"] }}</li>
+        </ul>
+    </div>
+    
+     <!-- Glossary -->
+    <div id = "info">
+        Useful Terms
+        <ul>
+            <li>Paint: The rectangular area surrounding the basket</li>
+            <li>Midrange Jumper: A 2-point shot taken outside of the paint</li>
+            <li>Offensive Rebound: A rebound when the the player's team is on offense</li>
+            <li>Defensive Rebound: A rebound when the the player's team is on defense</li>
+        </ul>
+    </div>
+    <div id = "info2">
+        Note: This chart shows the location of the shots for which {{ player }} grabbed the rebound, not the location of 
+        where the rebound was secured
+    </div>
+    
+    <!-- Create Button to go to player's assist chart -->
+    <form action="{{ url_for('assistchart') }}" method="get">
+        <fieldset>
+            <div id = "btn1">
+                <div class="form-group">
+                    <button class="btn btn-danger" type="submit">Assist Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+     <!-- Create Button to go to player's Rebound chart -->
+    <form action="{{ url_for('shotchart') }}" method="get">
+        <fieldset>
+            <div id = "btn2">
+                <div class="form-group">
+                    <button class="btn btn-warning" type="submit">Shot Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+     <!-- Create Button to go to go to player select -->
+    <form action="{{ url_for('playerselect') }}" method="get">
+        <fieldset>
+            <div id = "btn3">
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Change Player</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Create Button to go to go to controlpanel -->
+    <form action="{{ url_for('controlpanel') }}" method="get">
+        <fieldset>
+            <div id = "btn4">
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Control Panel</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

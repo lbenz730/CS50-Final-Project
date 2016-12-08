@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    assistchart
+{% endblock %}
+{% block head %}
+    <link href="{{ url_for('static', filename='chart_styles.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block main %}
+    <!--Display Shot Chart without escaping HTML-->
+    <div id = "chart">
+        {{ chart|safe }}
+    </div>
+    
+    <!--Display Relevant text -->
+    <div id = "top">
+        2013-15 Assist Chart for {{ player }}
+    </div>
+    <div id = "togglebar">
+        Interactive Togglebar (Move Cursor Left)
+        <ul>
+            <li>Magnifying Glass: Zoom in on a subsection of the court</li>
+            <li>Arrow: Navigate the Court</li>
+            <li>Home: Retrun the plot to original format</li>
+        </ul>
+    </div>
+    
+    <!--Display Player stats -->
+    <div id = "stats">
+        Assist Stats for {{ player }}
+         <ul>
+            <li>2-Point Assist Frequency: {{ stats["twoFreq"] }}</li>
+            <li>3-Point Assist Frequency: {{ stats["threeFreq"] }}</li>
+            <li>Frequency of Assisted Shots in Paint: {{ stats["paintFreq"] }}</li>
+            <li>Frequency of Assisted Midrange Jumpers: {{ stats["midrangeFreq"] }}</li>
+            <li>Alley Oop Frequency: {{ stats["alleyoopFreq"] }}</li>
+        </ul>
+    </div>
+    
+    <!-- Glossary -->
+    <div id = "info">
+        Useful Terms
+        <ul>
+            <li>Paint: The rectangular area surrounding the basket</li>
+            <li>Midrange Jumper: A 2-point shot taken outside of the paint</li>
+            <li>
+                <a href = "http://i1.wp.com/assets.sbnation.com/assets/2337307/griffoop.gif?w=848" target = "_blank">Alley Oop</a>
+                : An airborn assist leading directly to a slam dunk
+            </li>
+        </ul>
+    </div>
+    <div id = "info2">
+        Note: This chart shows the location of the shots assisted by {{ player }} , not the location of 
+            where the assist was made
+    </div>
+    
+    <!-- Create Button to go to player's assist chart -->
+    <form action="{{ url_for('shotchart') }}" method="get">
+        <fieldset>
+            <div id = "btn1">
+                <div class="form-group">
+                    <button class="btn btn-warning" type="submit">Shot Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+     <!-- Create Button to go to player's Rebound chart -->
+    <form action="{{ url_for('reboundchart') }}" method="get">
+        <fieldset>
+            <div id = "btn2">
+                <div class="form-group">
+                    <button class="btn btn-info" type="submit">Rebound Chart</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+     <!-- Create Button to go to go to player select -->
+    <form action="{{ url_for('playerselect') }}" method="get">
+        <fieldset>
+            <div id = "btn3">
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit">Change Player</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Create Button to go to go to controlpanel -->
+    <form action="{{ url_for('controlpanel') }}" method="get">
+        <fieldset>
+            <div id = "btn4">
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Control Panel</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

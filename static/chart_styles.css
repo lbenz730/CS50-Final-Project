@@ -1,0 +1,95 @@
+body
+{
+    background-color: #cce6ff;
+}
+
+#btn1
+{
+    position: absolute;
+    top: 75%;
+    left: 65%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+}
+
+#btn2
+{
+    position: absolute;
+    top: 85%;
+    left: 65%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+}
+
+#btn3
+{
+    position: absolute;
+    top: 75%;
+    left: 85%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+}
+
+#btn4
+{
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+}
+
+#top
+{
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#chart
+{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+}
+
+#togglebar
+{
+    position: absolute;
+    top: 95%;
+    left: 20%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+    font-size: 12px;
+}
+#stats
+{
+    position: absolute;
+    top: 20%;
+    left: 65%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+    font-size: 18px;
+    font-weight: bold;
+}
+#info
+{
+    position: absolute;
+    top: 57.5%;
+    left: 65%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+    font-size: 15px;
+}
+
+#info2
+{
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    margin-top: -50px; 
+    margin-left: -100px; 
+    font-size: 15px;
+}

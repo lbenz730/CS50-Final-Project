@@ -1,0 +1,77 @@
+Luke Benz
+CS50 Final Project
+December, 2016
+design.txt
+
+Design for NBA Shot Charts: A Basketball Data Visualization
+
+STORING THE DATA
+For this project, I have elected to store all of the data needed in a SQL database, titled nbadata.db . Storing data in the SQL
+database has several advantages over storing data in the .csv format (the form in which I recieved the data from my club, the
+Yale Undergraduate Sports Analytics Group). To begin with, SQL database are dynamic, and data can easily be inserted and deleted
+from the database. While I didn't need to insert/delete any data after loading the .csv files into the database, I knew that in 
+order to make a player-specific graphics, I was going to have to do lots of searches in the database to extract very specific
+subsets of data. Searching/extracting data is much easier in an SQL database rather than a .csv file, hence the need to store my
+data in nbadata.db . To make searching the SQL database even faster, I placed indicies on columns over which I would frequently 
+search.
+
+
+PLAYER SELECT
+The player select page a simple form with one text field and one button. Upon pressing the green player select button, a "POST"
+request is sent to the page. I then search the SQL database, nbadata.db to ensure that the player entered is a valid NBA player
+who played in the NBA at somepoint during 2013-2015. Rather than query the database for an exact match of the player selected, I
+take advatage of SQLite's LIKE operator. This allows users to not worry about capitalization issues when entering player name. 
+Upon validation of the selected player, a "GET" request is sent to render the webpage for the control panel. The selected player
+is stored as a global variable so that all other webpages have access to it. Should the player entered fail validation, a "GET" 
+request is sent to render an error message prompting the user to re-enter their player. 
+
+
+CONTROL PANEL
+This page is rather simple. It has four buttons, each of which sends a "GET" request to render the corresponding web-page 
+(shot chart, assist chart, rebound chart, and player select).
+
+RENDERING THE GRAPHICS
+Perhaps the most interesting part of this whole project is the graphic visualizations produced for each player. In this section,
+I will detail how each specific chart is created. I learned basic ideas about how to make shot charts from Savvas Tjortjoglou's 
+website, http://savvastjortjoglou.com/nba-shot-sharts.html, and then adapting the idea to create my own assist and rebound charts.
+For all charts, I make use of the library, matplotlib, Python's library for graphs and data visualization. However, matplotlib
+produces figures on the severside, not on the client side, so I also had to use the library mpld3. In this library, there is a
+function called fig_to_html(), which takes on takes a figure produced in matplotlib and converts it to html. I was able to then
+pass this html to the respective webpage (shotchart, assistchart, or reboundchart) in order to display the graphic.
+
+Shot Chart Specifics:
+1.  Select rows from the SQL database for which the choosen player took the shot
+2.  Extact the (x,y) coordinates of the shot and put it into a corresponding array based on whether the shot was made or missed
+3.  Produce a scatterplot of all points, coloring made shots green and missed shots red
+4.  Draw the NBA Court's lines onto the graphic. This code is copied exactly from Savvas Tjortjoglou's website, and is contained
+    in the file drawcourt.py
+5.  Call the function shotStats() from helpers.py to compute relevant stats for the selected player.
+6.  Pass the chart, player, and stats to the template shotchart.html and render the webpage.
+    
+Assist Chart Specifics:
+1.  Select rows from the SQL database for which the choosen player made the assist
+2.  Extact the (x,y) coordinates of the shot 
+3.  Produce a scatterplot of alls point
+4.  Draw the NBA Court's lines onto the graphic. This code is copied exactly from Savvas Tjortjoglou's website, and is contained
+    in the file drawcourt.py
+5.  Call the function assistStats() from helpers.py to compute relevant stats for the selected player.
+6.  Pass the chart, player, and stats to the template shotchart.html and render the webpage.
+    
+Rebound Chart Specifics:
+1.  Select rows from the SQL database for which the choosen player secured the rebound
+2.  Extract the (x,y) coordinates of the shot 
+3.  Determine if the rebound was offensive or defensive, by seeing if the team who shot the ball matched the team of the player
+    who rebounded the ball.
+4.  Produce a scatterplot of alls point, coloring offensive rebounds magenta and defensive rebounds turquoise
+5.  Draw the NBA Court's lines onto the graphic. This code is copied exactly from Savvas Tjortjoglou's website, and is contained
+    in the file drawcourt.py
+6.  Call the function reboundStats() from helpers.py to compute relevant stats for the selected player.
+7.  Pass the chart, player, and stats to the template shotchart.html and render the webpage.
+    
+    
+CALCULATING RELEVANT STATS (helpers.py)
+In helper.py, there are three functions, shotStats(), assistStats(), and reboundStats(). All of these functions behave in a nearly
+the same matter, and generate stats relevant to the chart being produced. In general, these functions sum of the number of shots
+taken in a certain location (eg 2-Point vs. 3-Point) or by other dichotomy (eg offensive vs. defensive rebound). To get the 
+frequencies, I simply divide the number of each desired trait by the total number of shots used in the generation of the respective
+chart.
