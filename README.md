@@ -5,6 +5,9 @@ CS50 Final Project
 December, 2016
 documentation.txt
 
+* [Video of me explaining my project](https://www.youtube.com/watch?v=CBKQNdGYGCc)
+* [Article I wrote about this project](http://sports.sites.yale.edu/cs50-what-i-learned-0)
+
 User's Manual for NBA Shot Charts: A Basketball Data Visualization
 
 CONFIGURING
